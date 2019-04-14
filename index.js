@@ -194,7 +194,7 @@ function setupPlayer(tty, asset) {
 				{
 					setTimeout(function(){
 						lock = false
-					}, 2000);
+					}, 3000);
 					console.log("player started playing")
 				}
 
