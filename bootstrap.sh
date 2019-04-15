@@ -19,10 +19,10 @@ function list_through_files {
 
 	for a in "$folder/"* ; do
 
+		echo "folder: $folder/$a"
 		if [ -d "$a" ] ; then
 			## if $a is our folder (rpi_update...)
-			if [ "$a" == "assets" ] ; then
-				echo "assets: $folder/$a"
+			if [[ "$a" == "assets" ]] ; then
 				update_assets "$a"
 			# else
 			# 	echo "COPING $a"
