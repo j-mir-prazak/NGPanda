@@ -48,6 +48,9 @@ function cleanPID(pid) {
 var assets = new Array();
 
 assets = fs.readdirSync('assets')
+var secret_assets = new Array();
+
+secret_assets = fs.readdirSync('secret_assets')
 
 // fs.readdir('./assets', function(err, items) {
 //
@@ -69,6 +72,18 @@ console.log(assets);
 function handleButtons(tty, button_array) {
 
 	console.log(button_array)
+	var special_moves = new Array(
+		"01",
+		"02",
+		"03",
+		"012",
+		"013",
+		"123",
+		"0123",
+		"023",
+		"12",
+		"23",
+	)
 	var sum = 0
 	var combo = ""
 	for (var i = 0; i < button_array.length; i++) {
@@ -89,6 +104,15 @@ function handleButtons(tty, button_array) {
 	else
 	{
 		console.log("special move")
+
+		if ( secret_assets ) {
+
+			var as = Math.floor(Math.random() * secret_assets.length)
+			setupPlayer(ttys[tty], "./secret_assets/"+as)
+			
+			}
+
+		}
 	}
 
 }
