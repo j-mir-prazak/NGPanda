@@ -19,7 +19,6 @@ function list_through_files {
 
 	for a in "$folder/"* ; do
 
-		echo "folder: $a"
 		if [ -d "$a" ] ; then
 			## if $a is our folder (rpi_update...)
 			if [[ $(basename $a) == "assets" ]] ; then
@@ -44,7 +43,7 @@ function update_assets {
 	echo -e "COPING $folder"
 	rm -rf ./assets/*
 	gcp  "$folder"/* ./assets/
-	
+
 	# for v in "$folder/"* ; do
 	#
 	# 	if [ ! -d "$v" ] ; then
