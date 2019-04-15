@@ -13,6 +13,7 @@ function terminate {
 	echo -e "\n\n"
 	trap SIGTERM
 	trap SIGINT
+	kill -SIGTERM $$ 2>/dev/null
 	}
 
 trap terminate SIGINT

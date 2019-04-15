@@ -38,7 +38,7 @@ long lastPressed = 0;
 int pause = 250;
 int pressed = 0;
 long lastCheck = 0;
-int freq = 70;
+int freq = 100;
 
 String serialInput= "";
 String lastCombo = "";
@@ -54,19 +54,20 @@ void setup() {
   pinMode(B3, INPUT_PULLUP);
   pinMode(B4, INPUT_PULLUP);
 
-  Serial.begin(9600);
+  Serial.begin(19200);
   //Serial.setTimeout(0);
   while (!Serial) {
       ; // wait for serial port to connect. Needed for native USB
   }
   Serial.println("serial connected");
+  Serial.setTimeout(0);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   time = millis();
   
-  if( Serial.available() > 0) {
+  if( true ) {
      serialInput = Serial.readString();
     if ( serialConnected == false && serialInput == "system:ready" ) {
         serialConnected = true;
@@ -89,6 +90,7 @@ void loop() {
           stateB3 = digitalRead(B3);
           stateB4 = digitalRead(B4);
           
+          
           if ( time > lastCheck + freq) {   
         
               if ( stateB1 == 0 && stateB1 == lastStateB1 ) breakB1 = 1;
@@ -108,7 +110,7 @@ void loop() {
               
               if ( time > lastPressed + pause && pressed < 4 && breaks == 0) {
                 
-                if ( output != lastCombo || time > lastPressed + ( 300 * pause ) ) {
+                if ( output != lastCombo || time > lastPressed + ( 100 * pause ) ) {
                   Serial.println(String("buttons:" + output));
                   lastPressed = time;
                 }
