@@ -44,7 +44,7 @@ function update_assets {
 	echo -e "COPING $folder"
 	rm -rf ./assets/*
 	gcp  "$folder"/* ./assets/
-
+	
 	# for v in "$folder/"* ; do
 	#
 	# 	if [ ! -d "$v" ] ; then

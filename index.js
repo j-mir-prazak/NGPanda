@@ -142,6 +142,8 @@ function setupPlayer(tty, asset) {
 	var tty = tty || false
 	if ( asset === false ) return false
 
+	if ( tty["player"] && tty["player"]["lock"] == true ) return false
+
 	if ( tty["player"] && tty["player"]["player"].open == true )
 	{
 
@@ -159,7 +161,8 @@ function setupPlayer(tty, asset) {
 		console.log(asset + " exists")
 		var player = {
 		"player": omx(asset, tty["volume"]),
-		"volume": 0
+		"volume": 0,
+		"lock":true
 		}
 	}
 
@@ -193,7 +196,7 @@ function setupPlayer(tty, asset) {
 				else if (string[i].length > 0 && string[i].match(/Selected audio co/) )
 				{
 					setTimeout(function(){
-						lock = false
+						player["lock"] = false
 					}, 3000);
 					console.log("player started playing")
 				}
@@ -215,7 +218,7 @@ function setupPlayer(tty, asset) {
 	}
 
 	player["player"].on('close', function(pid) {
-		lock = false
+		player["lock"] = false
 		console.log("playback ended")
 		cleanPID(pid)
 	}.bind(null, pid))
