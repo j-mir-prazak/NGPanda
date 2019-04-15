@@ -5,7 +5,6 @@ counter=0
 
 function terminate {
 
-	kill -SIGINT $PROC1 2>/dev/null
 	kill -SIGTERM $PROC1 2>/dev/null
 	echo -e "\e[33m\n\n"
 	echo -e "-----------------------------"
