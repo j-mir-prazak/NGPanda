@@ -22,6 +22,7 @@ function list_through_files {
 		if [ -d "$a" ] ; then
 			## if $a is our folder (rpi_update...)
 			if [ "$a" == "assets" ] ; then
+				echo "assets: $folder/$a"
 				update_assets "$a"
 			# else
 			# 	echo "COPING $a"
@@ -121,7 +122,7 @@ for i in /media/* ; do
 
         echo "$j/$import_folder"
 
-	list_through_files "$j/$import_folder"
+				list_through_files "$j/$import_folder"
 
 
     fi
