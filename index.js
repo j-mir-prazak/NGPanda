@@ -85,7 +85,8 @@ function handleButtons(tty, button_array) {
 		"023",
 		"12",
 		"23",
-	)
+	);
+
 	var sum = 0
 	var combo = ""
 	for (var i = 0; i < button_array.length; i++) {
@@ -113,8 +114,6 @@ function handleButtons(tty, button_array) {
 			setupPlayer(ttys[tty], "./secret_assets/"+as)
 
 			}
-
-		}
 	}
 
 }
