@@ -111,7 +111,7 @@ function handleButtons(tty, button_array) {
 		if ( secret_assets.length > 0 ) {
 
 			var as = Math.floor(Math.random() * secret_assets.length)
-			setupPlayer(ttys[tty], "./secret_assets/"+as)
+			setupPlayer(ttys[tty], "./secret_assets/"+secret_assets[as])
 
 			}
 	}
